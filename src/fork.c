@@ -56,9 +56,7 @@ int parse_args(int argc, char* argv[])
 
 		switch(c){
 		case 'h':
-			printf("fork\n");
 			printf("USAGE: %s %s\n", argv[0], ARG_USAGE);
-			printf("\n");
 			printf("%s\n", HELP);
 			return -1;
 		case 'o':
