@@ -22,10 +22,20 @@
 
 #define ARG_USAGE "[--stdout <file>] [--stdin <file>] [--stderr <file>] <command [args...]>"
 #define HELP					\
-	"-h --help			\n"	\
-	"	Show this message.	\n" 	\
-	"-o <file> --stdout <file>	\n"	\
-	"	Redirects the stdout to <file>."\
+	"-h, --help				\n"	\
+	"	Show this message.		\n" 	\
+	"					\n"	\
+	"-o <file>				\n"	\
+	"--stdout <file>			\n"	\
+	"	Redirects the stdout to <file>. \n"	\
+	"					\n"	\
+	"-i <file>				\n"	\
+	"--stdin <file>				\n"	\
+	"	Redirects the stdin to <file>.	\n"	\
+	"					\n"	\
+	"-e <file>				\n"	\
+	"--stderr <file>			\n"	\
+	"	Redirects the stderr to <file>.	"	\
 
 static struct option long_options[] =
 {
