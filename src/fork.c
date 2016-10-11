@@ -1,3 +1,4 @@
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,7 +18,7 @@
 	}
 #define DEV_NULL_PATH "/dev/null"
 
-void dispatch_child_process(int argc, char* argv[])
+void dispatch_child_process(int argc, char* argv[], char* envp[])
 {
 
 	UNUSED(argc);
@@ -27,11 +28,11 @@ void dispatch_child_process(int argc, char* argv[])
 	close(STDOUT_FILENO);
 	close(STDERR_FILENO);
 
-	if(execvp(argv[1], &argv[1]) == -1)
+	if(execvpe(argv[1], &argv[1], envp) == -1)
 		ERROR("Cannot execute the command %s\n", argv[1]);
 }
 
-int main(int argc, char* argv[])
+int main(int argc, char* argv[], char* envp[])
 {
 
 	if(argc <= 1)
@@ -42,7 +43,7 @@ int main(int argc, char* argv[])
 	if(fork_result == -1)
 		ERROR("Cannot fork the process\n");
 	if(fork_result == 0)
-		dispatch_child_process(argc, argv);
+		dispatch_child_process(argc, argv, envp);
 
 	return 0;
 }
