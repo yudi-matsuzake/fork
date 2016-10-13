@@ -47,9 +47,9 @@ static struct option long_options[] =
 };
 
 struct fork_option {
-	char redirect_stdout[BUFSIZ];
-	char redirect_stdin[BUFSIZ];
-	char redirect_stderr[BUFSIZ];
+	const char *redirect_stdout;
+	const char *redirect_stdin;
+	const char *redirect_stderr;
 
 } fork_option = {DEV_NULL_PATH, DEV_NULL_PATH, DEV_NULL_PATH};
 
@@ -70,13 +70,13 @@ int parse_args(int argc, char* argv[])
 			printf("%s\n", HELP);
 			return -1;
 		case 'o':
-			strcpy(fork_option.redirect_stdout, optarg);
+			fork_option.redirect_stdout = optarg;
 			break;
 		case 'i':
-			strcpy(fork_option.redirect_stdin, optarg);
+			fork_option.redirect_stdin = optarg;
 			break;
 		case 'e':
-			strcpy(fork_option.redirect_stderr, optarg);
+			fork_option.redirect_stderr = optarg;
 			break;
 		default:
 			printf("USAGE: %s %s\n", argv[0], ARG_USAGE);
