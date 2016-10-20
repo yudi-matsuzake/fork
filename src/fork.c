@@ -37,6 +37,7 @@
 	"--stderr <file>			\n"	\
 	"	Redirects the stderr to <file>.	"	\
 
+
 static struct option long_options[] =
 {
 	{"stdout",	required_argument,	0, 'o'},
@@ -45,6 +46,8 @@ static struct option long_options[] =
 	{"help",	no_argument,		0, 'h'},
 	{0,	0,	0,	0}
 };
+
+int opterr = 0;
 
 struct fork_option {
 	char redirect_stdout[BUFSIZ];
@@ -79,6 +82,8 @@ int parse_args(int argc, char* argv[])
 			strcpy(fork_option.redirect_stderr, optarg);
 			break;
 		default:
+			if(!option_index)
+				return 1;
 			printf("USAGE: %s %s\n", argv[0], ARG_USAGE);
 			printf("%s\n", HELP);
 			ERROR("Invalid option\n");

@@ -1,6 +1,6 @@
 # fork
 
-**fork** was born from the need for simple forks. It is frustrating how difficult it is to fork a process in contrast to the simplicity of calling the *POSIX* function [fork()](http://man7.org/linux/man-pages/man2/fork.2.html) in a c program. **fork** is so simple that it fits in 110 lines(cloc) of ansi c code.
+**fork** was born from the need for simple forks. It is frustrating how difficult it is to fork a process in contrast to the simplicity of calling the *POSIX* function [fork()](http://man7.org/linux/man-pages/man2/fork.2.html) in a c program.
 
 Have you ever had the terminal running and needed to open a GUI application? It's a mess.
 
